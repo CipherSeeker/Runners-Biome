@@ -17,7 +17,7 @@
             </p>
             <a
               href="/"
-              class="flex items-center mb-[100px] border-b-2 border-transparent hover:border-primary hover:border-b-2 transition-all duration-300"
+              class="flex items-center mb-[100px] border-b-2 border-transparent hover:border-primary hover:border-b-2 transition-all duration-250"
             >
               <svg class="w-[20px] h-[20px]">
                 <use href="<?php echo get_template_directory_uri(); ?>/assets/img/icons.svg#icon-Arrow-back"></use>
@@ -31,9 +31,5 @@
           </div>
         </div>
       </section>
-
-      <!-- Footer -->
-
-      
 </main>
 <?php get_footer(); ?>

@@ -63,7 +63,7 @@ class GetFeedsEndpoint extends AbstractEndpointHandler
         $feed = $this->cpt->get($id);
 
         if ($feed === null) {
-            return new WP_Error('not_found', "FeedCard \"${id}\" was not found", ['status' => 404]);
+            return new WP_Error('not_found', "FeedCard \"{$id}\" was not found", ['status' => 404]);
         }
 
         return new WP_REST_Response($this->transformer->transform($feed));

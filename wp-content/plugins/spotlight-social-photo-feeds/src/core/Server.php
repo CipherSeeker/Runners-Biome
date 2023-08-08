@@ -11,6 +11,7 @@ use RebelCode\Iris\Data\Item;
 use RebelCode\Iris\Data\Source;
 use RebelCode\Iris\Engine;
 use RebelCode\Iris\Importer;
+use RebelCode\Iris\Importer\ImportedBatch;
 use RebelCode\Iris\Utils\Marker;
 use RebelCode\Spotlight\Instagram\Engine\Data\Feed\StoryFeed;
 use RebelCode\Spotlight\Instagram\Engine\Data\Item\MediaChild;
@@ -110,7 +111,12 @@ class Server
     {
         $feed = $this->feedManager->createFeed($options);
 
-        $batch = $this->importer->importForSources($feed->sources);
+        try {
+            $batch = $this->importer->importForSources($feed->sources);
+        } catch (\Throwable $e) {
+            ErrorLog::exception($e);
+            $batch = new ImportedBatch([], [$e->getMessage()], false);
+        }
 
         return [
             'success' => true,

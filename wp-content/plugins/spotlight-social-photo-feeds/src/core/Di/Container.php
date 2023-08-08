@@ -78,7 +78,7 @@ class Container implements ContainerInterface
 
             $trace = implode("\n", $trace);
 
-            throw new LogicException("Circular dependency detected for \"${id}\", required by:\n${trace}");
+            throw new LogicException("Circular dependency detected for \"{$id}\", required by:\n{$trace}");
         }
 
         $fetching[$id] = true;
@@ -116,8 +116,9 @@ class Container implements ContainerInterface
                 }
             } catch (ContainerException $exception) {
                 throw new ContainerException(
-                    "Failed to create service \"${key}\". Reason: " . $exception->getMessage(),
-                    null, $exception
+                    "Failed to create service \"{$key}\". Reason: " . $exception->getMessage(),
+                    null,
+                    $exception
                 );
             }
 

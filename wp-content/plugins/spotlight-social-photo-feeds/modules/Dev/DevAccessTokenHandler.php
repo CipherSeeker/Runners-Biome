@@ -25,7 +25,7 @@ class DevAccessTokenHandler
         $igUser = new IgUser();
         $igUser->name = 'Developer';
         $igUser->type = 'DEVELOPER';
-        $igUser->username = "developer_${mediaCount}";
+        $igUser->username = "developer_{$mediaCount}";
         $igUser->bio = "Spotlight developer account with {$mediaCount} posts";
         $igUser->followersCount = 0;
         $igUser->followsCount = 0;

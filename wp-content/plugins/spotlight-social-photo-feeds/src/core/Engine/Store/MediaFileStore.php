@@ -9,6 +9,7 @@ use RebelCode\Iris\Data\Item;
 use RebelCode\Spotlight\Instagram\Config\ConfigEntry;
 use RebelCode\Spotlight\Instagram\Engine\Data\Item\MediaItem;
 use RebelCode\Spotlight\Instagram\Engine\Data\Item\MediaType;
+use RebelCode\Spotlight\Instagram\ErrorLog;
 use RebelCode\Spotlight\Instagram\Utils\Arrays;
 use RebelCode\Spotlight\Instagram\Utils\FileLocation;
 use RebelCode\Spotlight\Instagram\Utils\Files;
@@ -131,7 +132,7 @@ class MediaFileStore
                     }
                 }
             } catch (Exception $e) {
-                // Do nothing
+                ErrorLog::exception($e);
             } finally {
                 if (file_exists($refImage->path) && !is_dir($refImage->path)) {
                     @unlink($refImage->path);

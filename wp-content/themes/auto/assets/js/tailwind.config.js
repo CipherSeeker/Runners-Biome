@@ -1,7 +1,7 @@
 tailwind.config = {
-  theme: {
+    theme: {
     screens: {
-      sm: { max: "479px" },
+      sm: { max: "320px" },
       md: { max: "767px" },
       lg: { max: "1295px" },
       xl: { min: "1296px" },
@@ -9,15 +9,7 @@ tailwind.config = {
     container: {
       center: true,
       padding: "1rem",
-
-      // screens: {
-      //   sm: "320px", w: "100%",
-      //   md: "480px", w: "480px",
-      //   lg: "768px", w: "768px",
-      //   xl: "1200px", w: "1296px",
-      // },
     },
-
     colors: {
       primary: "#00AAA1",
       secondary: "#E8F3F3",
@@ -26,9 +18,13 @@ tailwind.config = {
       textTitles: "#222222",
       textPosts: "#555555",
       textTags: "#666666",
-      textUnderPosts: "#777777",
+      textAuthor:"#777777",
+      textUnderPosts: "##595959",
       categoriesText: "#1C1C1C",
       transparent: "transparent",
     },
+  },
+  experimental: {
+    optimizeUniversalDefaults: true,
   },
 };

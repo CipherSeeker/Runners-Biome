@@ -7,6 +7,8 @@ namespace RebelCode\Spotlight\Instagram\Actions;
 use RebelCode\Iris\Data\Source;
 use RebelCode\Iris\Fetcher\FetchQuery;
 use RebelCode\Iris\Importer;
+use RebelCode\Spotlight\Instagram\ErrorLog;
+use Throwable;
 
 class BatchHandler
 {
@@ -30,9 +32,13 @@ class BatchHandler
      */
     public function __invoke($arg): void
     {
-        $query = $this->prepareQuery($arg);
+        try {
+            $query = $this->prepareQuery($arg);
 
-        $this->importer->importBatch($query);
+            $this->importer->importBatch($query);
+        } catch (Throwable $e) {
+            ErrorLog::exception($e);
+        }
     }
 
     /**

@@ -68,7 +68,7 @@ class GetAccountsEndPoint extends AbstractEndpointHandler
         $account = $this->cpt->get($id);
 
         if ($account === null) {
-            return new WP_Error('not_found', "Account \"${id}\" was not found", ['status' => 404]);
+            return new WP_Error('not_found', "Account \"{$id}\" was not found", ['status' => 404]);
         }
 
         return new WP_REST_Response($this->transformAccount($account));

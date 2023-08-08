@@ -173,6 +173,13 @@ class DevPage
                     <td><?= spotlightInsta()->get('rest_api/base_url') ?></td>
                 </tr>
                 <tr>
+                    <td>Freemius SDK version</td>
+                    <td><?php
+                        global $sliFreemius;
+                        echo $sliFreemius->version;
+                        ?></td>
+                </tr>
+                <tr>
                     <td>Error Log path</td>
                     <td><?= ErrorLog::getPath() ?></td>
                 </tr>

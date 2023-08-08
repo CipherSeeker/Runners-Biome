@@ -7,10 +7,10 @@ use Psr\SimpleCache\CacheInterface;
 
 class IgGraphApiClient
 {
-    const API_URI = 'https://graph.facebook.com';
-    const TOKEN_EXPIRY = 60 * 24 * 3600;
-    const TOP_MEDIA = 'top_media';
-    const RECENT_MEDIA = 'recent_media';
+    public const API_URI = 'https://graph.facebook.com';
+    public const TOKEN_EXPIRY = 60 * 24 * 3600;
+    public const TOP_MEDIA = 'top_media';
+    public const RECENT_MEDIA = 'recent_media';
 
     /**
      * @since 0.1
@@ -52,10 +52,10 @@ class IgGraphApiClient
      *
      * @return IgAccount|null The associated Instagram Business account, or null if the page has no associated account.
      */
-    public function getAccountForPage(string $pageId, AccessToken $accessToken) : ?IgAccount
+    public function getAccountForPage(string $pageId, AccessToken $accessToken): ?IgAccount
     {
         // Get the info for the Facebook page
-        $request = IgApiUtils::createRequest('GET', static::API_URI . "/${pageId}", [
+        $request = IgApiUtils::createRequest('GET', static::API_URI . "/{$pageId}", [
             'fields' => 'instagram_business_account,access_token',
             'access_token' => $accessToken->code,
 
@@ -71,7 +71,7 @@ class IgGraphApiClient
         $userToken = $body['access_token'];
 
         // Get the user info
-        $request = IgApiUtils::createRequest('GET', static::API_URI . "/${userId}", [
+        $request = IgApiUtils::createRequest('GET', static::API_URI . "/{$userId}", [
             'fields' => implode(',', IgApiUtils::getGraphUserFields()),
             'access_token' => $userToken,
         ]);
@@ -97,10 +97,10 @@ class IgGraphApiClient
      * @return IgAccount|null The Instagram Business account, or null if no account was found for the given user ID
      *                        and access token.
      */
-    public function getAccountForUser(string $userId, AccessToken $accessToken) : ?IgAccount
+    public function getAccountForUser(string $userId, AccessToken $accessToken): ?IgAccount
     {
         // Get the user info
-        $request = IgApiUtils::createRequest('GET', static::API_URI . "/${userId}", [
+        $request = IgApiUtils::createRequest('GET', static::API_URI . "/{$userId}", [
             'fields' => implode(',', IgApiUtils::getGraphUserFields()),
             'access_token' => $accessToken->code,
         ]);
@@ -123,7 +123,7 @@ class IgGraphApiClient
      * @return array An array containing two keys, "media" and "next", which correspond to the media list and a function
      *               for retrieving the next batch of media or null if there are is more media to retrieve.
      */
-    public function getMedia(string $userId, string $accessToken) : array
+    public function getMedia(string $userId, string $accessToken): array
     {
         $getRemote = function () use ($userId, $accessToken) {
             $request = IgApiUtils::createRequest('GET', static::API_URI . "/{$userId}/media", [
@@ -163,7 +163,7 @@ class IgGraphApiClient
      *
      * @return IgMedia[]
      */
-    protected function expandWithComments(array $mediaList, string $accessToken) : array
+    protected function expandWithComments(array $mediaList, string $accessToken): array
     {
         $mediaIds = array_filter(array_column($mediaList, 'id'));
 

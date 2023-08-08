@@ -64,7 +64,7 @@ class ConfigSet
      *
      * @throws OutOfBoundsException If the key does not map to a config entry.
      */
-    public function get(string $key) : ConfigEntry
+    public function get(string $key): ConfigEntry
     {
         if ($this->has($key)) {
             return $this->entries[$key];
@@ -74,7 +74,7 @@ class ConfigSet
             return ($this->default)($key);
         }
 
-        throw new OutOfBoundsException("Undefined config for key \"${key}\"");
+        throw new OutOfBoundsException("Undefined config for key \"{$key}\"");
     }
 
     /**
@@ -86,7 +86,7 @@ class ConfigSet
      *
      * @return bool True if the set has a config entry for the given key, false if not.
      */
-    public function has(string $key) : bool
+    public function has(string $key): bool
     {
         return array_key_exists($key, $this->entries);
     }
@@ -98,7 +98,7 @@ class ConfigSet
      *
      * @return ConfigEntry[]
      */
-    public function getEntries() : array
+    public function getEntries(): array
     {
         return $this->entries;
     }

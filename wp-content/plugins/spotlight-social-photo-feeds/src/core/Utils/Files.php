@@ -2,7 +2,9 @@
 
 namespace RebelCode\Spotlight\Instagram\Utils;
 
+use RebelCode\Spotlight\Instagram\ErrorLog;
 use RuntimeException;
+use Throwable;
 
 /**
  * Utility functions for dealing with files.
@@ -22,6 +24,7 @@ class Files
     {
         $dir = @opendir($path);
         if (!is_resource($dir)) {
+            ErrorLog::message('Unable to open directory: ' . $path);
             return;
         }
 
@@ -51,7 +54,7 @@ class Files
 
         if (!$curl) {
             throw new RuntimeException(
-                'Spotlight was unable to initialize curl. Please check if the curl extension is enabled.'
+                'Unable to initialize curl. Please check if the curl extension is enabled.'
             );
         }
 
@@ -59,7 +62,7 @@ class Files
 
         if (!$file) {
             throw new RuntimeException(
-                'Spotlight was unable to create the file: ' . $filepath
+                'Failed to open file for download: ' . $filepath
             );
         }
 
@@ -83,9 +86,11 @@ class Files
 
             if (!$success) {
                 throw new RuntimeException(
-                    'Spotlight failed to get the media data from Instagram: ' . curl_error($curl)
+                    'File download failed: ' . curl_error($curl)
                 );
             }
+        } catch (Throwable $e) {
+            ErrorLog::exception($e);
         } finally {
             curl_close($curl);
             fclose($file);
