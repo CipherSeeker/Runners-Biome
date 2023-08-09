@@ -1,6 +1,6 @@
 # runersbiome.com
 
-Welcome to the repository for "runersbiome.com" - an information-centric website and blog designed and developed by CipherSeeker.
+Welcome to the repository for "runersbiome.com" - an information-centric website and blog, designed and developed by CipherSeeker.
 
 ![Website Screenshot](https://github.com/CipherSeeker/Runners-Biome/blob/main/Hero.avif)
 
@@ -33,7 +33,7 @@ Welcome to the repository for "runersbiome.com" - an information-centric website
 
 ## Installation
 
-1. Clone the repository: `git clone https://github.com/yourusername/runersbiome.git`
+1. Clone the repository: `git clone https://github.com/CipherSeeker/runersbiome.git`
 2. Configure a local development environment with WordPress.
 3. Import the theme into your WordPress installation.
 4. Install and configure necessary plugins (MailPoet, WPForms, Spotlight, etc.).
