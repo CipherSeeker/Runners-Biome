@@ -1,6 +1,6 @@
 # runersbiome.com
 
-Welcome to the repository for "runersbiome.com" - an information-centric website and blog designed and developed by [Your Name].
+Welcome to the repository for "runersbiome.com" - an information-centric website and blog designed and developed by CipherSeeker.
 
 ![Website Screenshot](https://github.com/CipherSeeker/Runners-Biome/blob/main/Hero.avif)
 
